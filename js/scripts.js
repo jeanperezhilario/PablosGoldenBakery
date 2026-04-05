@@ -67,4 +67,46 @@ document.addEventListener('DOMContentLoaded', function() {
             window.open(url, '_blank', 'noopener,noreferrer');
         });
     }
+
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        const formEndpoint = 'https://formspree.io/f/xlgoowqk';
+        const messageBox = document.getElementById('formMessage');
+        let messageTimer = null;
+
+        function showFormMessage(text, type) {
+            clearTimeout(messageTimer);
+            messageBox.textContent = text;
+            messageBox.classList.remove('d-none', 'alert-success', 'alert-danger');
+            messageBox.classList.add(type === 'success' ? 'alert-success' : 'alert-danger');
+            messageTimer = setTimeout(() => {
+                messageBox.classList.add('d-none');
+            }, 6000);
+        }
+
+        contactForm.addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const formData = new FormData(contactForm);
+
+            try {
+                const response = await fetch(formEndpoint, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    showFormMessage('¡Gracias! Tu mensaje se ha enviado y pronto te responderemos.', 'success');
+                    contactForm.reset();
+                } else {
+                    showFormMessage('No se pudo enviar el mensaje. Intenta de nuevo en unos instantes.', 'danger');
+                }
+            } catch (error) {
+                console.error('Error enviando el formulario:', error);
+                showFormMessage('Hubo un problema al enviar el mensaje. Por favor, prueba más tarde.', 'danger');
+            }
+        });
+    }
 });

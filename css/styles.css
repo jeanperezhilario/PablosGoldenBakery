@@ -60,6 +60,7 @@ h1, h2, h3, h4, h5, h6 {
 .hero-carousel {
     position: relative;
     height: 600px; /* Altura fija para desktop */
+    margin-top: 70px;
 }
 
 .hero-carousel .carousel {
@@ -284,8 +285,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (max-width: 768px) {
+    .navbar-brand {
+        font-size: 1.3rem;
+    }
+    .navbar-brand .logo {
+        width: 70px;
+    }
     .hero-carousel {
         height: 400px; /* Altura para tablet */
+        margin-top: 60px;
     }
     .hero-content h1 {
         font-size: 2.5rem;
@@ -296,8 +304,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (max-width: 576px) {
+    .navbar-brand {
+        font-size: 0.95rem;
+    }
+    .navbar-brand .logo {
+        width: 50px;
+    }
     .hero-carousel {
         height: 300px; /* Altura para mobile */
+        margin-top: 55px;
     }
     .hero-content h1 {
         font-size: 2rem;

@@ -283,22 +283,23 @@
             <div class="row">
                 <div class="col-lg-6 mb-4">
                     <h4 class="mb-4">Envíanos un Mensaje</h4>
-                    <form>
+                    <div id="formMessage" class="alert d-none" role="alert"></div>
+                    <form id="contactForm" method="POST">
                         <div class="mb-3">
                             <label for="name" class="form-label">Nombre</label>
-                            <input type="text" class="form-control" id="name" required>
+                            <input type="text" class="form-control" name="name" id="name" required>
                         </div>
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" required>
+                            <input type="email" class="form-control" name = "email" id="email" required>
                         </div>
                         <div class="mb-3">
                             <label for="celular" class="form-label">Celular</label>
-                            <input type="tel" class="form-control" id="celular" required>
+                            <input type="tel" class="form-control" name = "celular" id="celular" required>
                         </div>
                         <div class="mb-3">
                             <label for="message" class="form-label">Mensaje</label>
-                            <textarea class="form-control" id="message" rows="5" required></textarea>
+                            <textarea class="form-control" name = "message" id="message" rows="5" required></textarea>
                         </div>
                         <button type="submit" class="btn btn-golden">Enviar Mensaje</button>
                     </form>
